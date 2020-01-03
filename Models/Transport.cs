@@ -9,6 +9,6 @@ namespace APIStarWars.Models
     public string TransportName{get;set;}
     public string Speed{get;set;}
 
-    public Person Person {get;set;}
+    public List<Person> People {get;set;} = new List<Person>();
   }
 }

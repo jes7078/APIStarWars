@@ -2,15 +2,17 @@
 using APIStarWars.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace APIStarWars.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20200103185437_ChangedAgain")]
+    partial class ChangedAgain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,9 +38,6 @@ namespace APIStarWars.Migrations
 
                     b.Property<int>("TransportId")
                         .HasColumnType("integer");
-
-                    b.Property<string>("TransportName")
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

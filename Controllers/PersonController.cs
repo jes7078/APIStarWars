@@ -21,6 +21,8 @@ namespace APIStarWars.Controllers
   {
     var db=new DatabaseContext();
     person.Id=0;
+    var tr=db.Transports.FirstOrDefault(tra=>tra.TransportName==person.TransportName);
+    person.TransportId=tr.Id;
     db.People.Add(person);
     db.SaveChanges();
     return Ok(person);
