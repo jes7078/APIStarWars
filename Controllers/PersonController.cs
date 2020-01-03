@@ -17,23 +17,13 @@ namespace APIStarWars.Controllers
     }
 
   [HttpPost]
-  public ActionResult CreatePerson(Person people)
+  public ActionResult CreatePerson(Person person)
   {
     var db=new DatabaseContext();
-    var prevPerson=db.People.FirstOrDefault(pe => pe.Id == people.Id);
-    if(prevPerson==null)
-    {
-      return NotFound();
-    }
-    else
-    {
-      prevPerson.Id=person.Id;
-      prevPerson.Name=person.Name;
-      prevPerson.Force=person.Force;
-      prevPerson.PrimaryWeapon=person.PrimaryWeapon;
-      db.SaveChanges();
-      return Ok(prevPerson);
-    }
+    person.Id=0;
+    db.People.Add(person);
+    db.SaveChanges();
+    return Ok(person);
   }
 
 
