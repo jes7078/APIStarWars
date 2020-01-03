@@ -21,7 +21,7 @@ namespace APIStarWars.Controllers
   {
     var db=new DatabaseContext();
     var prevPerson=db.People.FirstOrDefault(pe => pe.Id == person.Id);
-    if(prevStudent==null)
+    if(prevPerson==null)
     {
       return NotFound();
     }
