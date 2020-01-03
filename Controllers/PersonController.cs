@@ -25,7 +25,24 @@ namespace APIStarWars.Controllers
     db.SaveChanges();
     return Ok(person);
   }
-
+[HttpPut("{id}")]
+public ActionResult UpdatePerson(Person person)
+{
+  var db=new DatabaseContext();
+  var prevPerson=db.People.FirstOrDefault(pe=>pe.Id==person.Id);
+  if (prevPerson == null)
+  {
+    return NotFound();
+  }
+  else 
+  {
+    prevPerson.Name=person.Name;
+    prevPerson.Force=person.Force;
+    prevPerson.PrimaryWeapon=person.PrimaryWeapon;
+    db.SaveChanges();
+    return Ok(prevPerson);
+  }
+}
 
   }
 }
