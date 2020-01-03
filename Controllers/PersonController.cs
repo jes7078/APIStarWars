@@ -44,5 +44,22 @@ public ActionResult UpdatePerson(Person person)
   }
 }
 
+[HttpDelete("{id}")]
+public ActionResult DeletePerson(int id)
+{
+  var db= new DatabaseContext();
+  var person=db.People.FirstOrDefault(pe=>pe.Id==id);
+  if (person==null)
+  {
+    return NotFound();
+  }
+  else
+  {
+    db.People.Remove(person);
+    db.SaveChanges();
+    return Ok();
+  }
+}
+
   }
 }
