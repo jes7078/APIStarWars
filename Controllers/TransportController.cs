@@ -2,6 +2,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using APIStarWars.Models;
+using APIStarWars.ViewModels;
 
 namespace APIStarWars.Controllers
 {
