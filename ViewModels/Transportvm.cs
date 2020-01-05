@@ -8,6 +8,6 @@ namespace APIStarWars.ViewModels
     public string TransportName{get;set;}
     public string Speed{get;set;}
 
-    // public List<Personvm> People {get;set;} = new List<Personvm>();
+    public List<Personvm> People {get;set;}=new List<Personvm>();
   }
 }

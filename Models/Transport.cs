@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -9,6 +10,7 @@ namespace APIStarWars.Models
     public string TransportName{get;set;}
     public string Speed{get;set;}
 
-    public List<Person> People {get;set;} = new List<Person>();
+    public List<Person> People {get;set;}=new List<Person>();
+
   }
 }
