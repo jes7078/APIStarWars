@@ -17,6 +17,33 @@ namespace APIStarWars.Controllers
       return Ok(db.Transports.OrderBy(Transport=>Transport.TransportName));
     }
 
+    [HttpGet("{id}")]
+    public ActionResult GetOneTransport(int id)
+    {
+      var db= new DatabaseContext();
+      var transport=db.Transports.Include(i=>i.People).FirstOrDefault(Tr=>Tr.Id==id);
+      if (transport==null)
+      {
+        return NotFound();
+      }
+      else
+      {
+        var rv=new Personvm
+        {
+          Id = Transport.Id,
+          Name = Transport.TransportName,
+          Speed = Transport.Speed,
+          People = Person.People.Select(pr=>new Personvm
+          {
+           Id=pr.Id,
+           Name=pr.Name,
+           Force=pr.Force,
+           PrimaryWeapon=pr.PrimaryWeapon
+           }).ToLIst()
+        };
+      return Ok(rv);
+    }
+    }
    
 
  [HttpPost]
